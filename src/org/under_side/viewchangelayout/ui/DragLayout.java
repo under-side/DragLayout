@@ -68,10 +68,12 @@ public class DragLayout extends FrameLayout {
 	{
 		this.listener=listener;
 	}
+	
 	//获取当前的item状态
 	public ItemState getCurrentItemState() {
 		return mCurrentState;
 	}
+	
 	private void init() {
 		// a.获取ViewDragHelper的全局实体变量
 		myDragHelper = ViewDragHelper.create(this, 1.0f, myCallback);
@@ -110,12 +112,12 @@ public class DragLayout extends FrameLayout {
 		
         /*
          * 返回一个可拖动的子视图的水平像素运动范围的大小。此方法应返回0表示水平不能移动的意见。
-         * 另外，该方法默认的是返回的是0，即默认不能移动。则，如果想移动哪个方向，需要重写该方法。
+         * 由于此方法默认返回值就是0，则自定义的viewGroup中使用ViewDragHelper时，子view可以抢到焦点，但是无法拖动时，需要重写此方法，
+         * 并返回值不能为0。
          */
-		@Override
 		public int getViewHorizontalDragRange(View child) {
 			return mRange;
-		}
+		};
 		public int clampViewPositionHorizontal(View child, int left, int dx) {
 			// 限制mFrontView移动范围
 			if (child == mFrontView) {
