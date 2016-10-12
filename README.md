@@ -15,3 +15,5 @@
 ### 难点
 1. getViewHorizontalDragRange(View child)该方法的理解。默认返回0，当返回0时，，则表示水平方向不能移动的建议，Vertical也是一样；当子view可以获取焦点，但是无法移动时，重写该方法；
 2. 利用view.set...方法去实现view的动画变换；利用该方法实现view的动画效果，必须是在一个当view变化时就调用的方法中设置，才能达到向Animation一样的动画效果。
+
+PS：为了提高组件的向下兼容性，使用nineoldandroid.jar架包封装的属性来替换高版本中的9个属性。
